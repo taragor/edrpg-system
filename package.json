@@ -1,0 +1,18 @@
+{
+  "name": "edrpg-system",
+  "version": "2.0.0",
+  "description": "CSS compiler for the edrpgSystem system",
+  "scripts": {
+    "build": "sass src/scss/edrpg-system.scss css/edrpg-system.css --style=expanded --no-source-map",
+    "watch": "sass src/scss/edrpg-system.scss css/edrpg-system.css --style=expanded --source-map --watch"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Asacolips",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.53.0"
+  }
+}
