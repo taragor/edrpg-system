@@ -1,13 +1,16 @@
 {
     "includes": [
       "./assets/**",
+      "./css/**",
       "./lang/**",
+      "./lib/**",
       "./module/**",
       "./packs/**",
-      "./styles/**",
-      "./templates/**",
+      "./src/**",
+      "./templates",
       "./system.json",
       "./template.json",
+      "./package.json",
       "./README.md"
     ]
   }
