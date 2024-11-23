@@ -11,7 +11,11 @@ export default class edrpgSystemActorBase extends edrpgSystemDataModel {
       value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
       max: new fields.NumberField({ ...requiredInteger, initial: 10 })
     });
-    schema.power = new fields.SchemaField({
+    schema.shield = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 5 })
+    });
+    schema.karma = new fields.SchemaField({
       value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
       max: new fields.NumberField({ ...requiredInteger, initial: 5 })
     });
