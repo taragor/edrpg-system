@@ -46,3 +46,25 @@ EDRPG_SYSTEM.abilityGroupAbbreviations.personalCombat = {
   melWeap:  'EDRPG_SYSTEM.Ability.MelWeap.abbr',
   parry:    'EDRPG_SYSTEM.Ability.Parry.abbr',
 };
+
+EDRPG_SYSTEM.abilityGroups.intelligence = {
+  comp:     'EDRPG_SYSTEM.Ability.Comp.long',
+  cultLaw:  'EDRPG_SYSTEM.Ability.CultLaw.long',
+  cyber:    'EDRPG_SYSTEM.Ability.Cyber.long',
+  med:      'EDRPG_SYSTEM.Ability.Med.long',
+  planKnow: 'EDRPG_SYSTEM.Ability.PlanKnow.long',
+  science:  'EDRPG_SYSTEM.Ability.Science.long',
+  tact:     'EDRPG_SYSTEM.Ability.Tact.long',
+  trad:     'EDRPG_SYSTEM.Ability.Trad.long'
+};
+
+EDRPG_SYSTEM.abilityGroupAbbreviations.intelligence = {
+  comp:     'EDRPG_SYSTEM.Ability.Comp.abbr',
+  cultLaw:  'EDRPG_SYSTEM.Ability.CultLaw.abbr',
+  cyber:    'EDRPG_SYSTEM.Ability.Cyber.abbr',
+  med:      'EDRPG_SYSTEM.Ability.Med.abbr',
+  planKnow: 'EDRPG_SYSTEM.Ability.PlanKnow.abbr',
+  science:  'EDRPG_SYSTEM.Ability.Science.abbr',
+  tact:     'EDRPG_SYSTEM.Ability.Tact.abbr',
+  trad:     'EDRPG_SYSTEM.Ability.Trad.abbr'
+};
