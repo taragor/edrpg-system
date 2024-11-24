@@ -44,9 +44,29 @@
           <input type="text" name="system.attributes.rankpoints.value" value="{{system.attributes.rankpoints.value}}" data-dtype="Number"/>
           </div>
         </div>
-
       </div>
-      
+
+      <div class="resource grid grid-7col">
+        <div class="resource flex-group-center">
+          <label for="system.personalCombat.dodge.modHeader" class="resource-label">Dodge</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.personalCombat.dodge.modHeader" value="{{system.personalCombat.dodge.mod}}" data-dtype="Number" readonly="True"/>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="system.intelligence.initiative.modHeader" class="resource-label">Initiative</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.intelligence.initiative.modHeader" value="{{system.intelligence.tactics.mod}}" data-dtype="Number" readonly="True"/>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="system.intelligence.initiative.value" class="resource-label">Initiative</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.intelligence.initiative.value" value="{{system.intelligence.tact.mod}}" data-dtype="Number" readonly="True"/>
+          </div>
+        </div>
+      </div>
+
     </div>
   </header>
 
