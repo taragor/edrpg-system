@@ -58,7 +58,7 @@
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
       <section class="grid grid-3col">
-        <aside class="sidebar">
+        <section class="main grid-span-1">
 
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -76,32 +76,6 @@
             {{/each}}
           </div>
 
-          {{!-- Intelligence --}}
-          <div class="intelligence flexcol">
-            <h2>Intelligence</h2>
-            {{#each system.intelligence as |ability key|}}
-            <div class="intelligence flexrow flex-group-center">
-              <label for="system.intelligence.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.intelligence key)}}">{{localize (lookup @root.config.abilityGroups.intelligence key)}}</label>
-              <input type="text" name="system.intelligence.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.intelligence key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-              <input type="checkbox" name="system.intelligence.{{key}}.check" {{checked ability.check}}/>
-            </div>
-            {{/each}}
-          </div>
-
-          {{!-- Social Skills --}}
-          <div class="socialSkills flexcol">
-            <h2>Social Skills</h2>
-            {{#each system.socialSkills as |ability key|}}
-            <div class="socialSkills flexrow flex-group-center">
-              <label for="system.socialSkills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.socialSkills key)}}">{{localize (lookup @root.config.abilityGroups.socialSkills key)}}</label>
-              <input type="text" name="system.socialSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.socialSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-              <input type="checkbox" name="system.socialSkills.{{key}}.check" {{checked ability.check}}/>
-            </div>
-            {{/each}}
-          </div>
-
           {{!-- Vehicle Skills --}}
           <div class="vehicleSkills flexcol">
             <h2>Vehicle Skills</h2>
@@ -115,6 +89,20 @@
             {{/each}}
           </div>
 
+        </section>
+        <section class="main grid-span-1">
+          {{!-- Intelligence --}}
+          <div class="intelligence flexcol">
+            <h2>Intelligence</h2>
+            {{#each system.intelligence as |ability key|}}
+            <div class="intelligence flexrow flex-group-center">
+              <label for="system.intelligence.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.intelligence key)}}">{{localize (lookup @root.config.abilityGroups.intelligence key)}}</label>
+              <input type="text" name="system.intelligence.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              <span class="ability-mod rollable" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.intelligence key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.intelligence.{{key}}.check" {{checked ability.check}}/>
+            </div>
+            {{/each}}
+          </div>
           {{!-- Espionage --}}
           <div class="espionage flexcol">
             <h2>Espionage</h2>
@@ -127,14 +115,27 @@
             </div>
             {{/each}}
           </div>
-        </aside>
-
-        {{!-- For the main features list, span the right two columns --}}
-        <section class="main grid-span-2">
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/edrpg-system/templates/actor/parts/actor-features.hbs"}}
+        </section>
+        <section class="main grid-span-1">
+          {{!-- Social Skills --}}
+          <div class="socialSkills flexcol">
+            <h2>Social Skills</h2>
+            {{#each system.socialSkills as |ability key|}}
+            <div class="socialSkills flexrow flex-group-center">
+              <label for="system.socialSkills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.socialSkills key)}}">{{localize (lookup @root.config.abilityGroups.socialSkills key)}}</label>
+              <input type="text" name="system.socialSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              <span class="ability-mod rollable" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.socialSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.socialSkills.{{key}}.check" {{checked ability.check}}/>
+            </div>
+            {{/each}}
+          </div>
         </section>
 
+      </section>
+      {{!-- For the main features list, span the right two columns --}}
+      <section class="main">
+        {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+        {{> "systems/edrpg-system/templates/actor/parts/actor-features.hbs"}}
       </section>
     </div>
 
