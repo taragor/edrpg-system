@@ -15,6 +15,7 @@
       "KinWeap":  { "long": "Kinetic Weapons",    "abbr": "kinWeap"},
       "MelWeap":  { "long": "Melee Weapons",      "abbr": "melWeap"},
       "Parry":    { "long": "Parry",              "abbr": "parry"},
+
       "Comp":     { "long": "Computer",           "abbr": "comp"},
       "CultLaw":  { "long": "Culture & Law",      "abbr": "cultLaw"},
       "Cyber":    { "long": "Cyber",              "abbr": "cyber"},
@@ -22,7 +23,31 @@
       "PlanKnow": { "long": "Planetary Knowledge","abbr": "planKnow"},
       "Science":  { "long": "Science",            "abbr": "science"},
       "Tact":     { "long": "Tactics",            "abbr": "tact"},
-      "Trad":     { "long": "Trading",            "abbr": "trad"}
+      "Trad":     { "long": "Trading",            "abbr": "trad"},
+
+      "Bar":      { "long": "Bargain",            "abbr": "bar"},
+      "Bluf":     { "long": "Bluff",              "abbr": "bluf"},
+      "Charm":    { "long": "Charm",              "abbr": "charm"},
+      "Dipl":     { "long": "Diplomacy",          "abbr": "dipl"},
+      "Gamb":     { "long": "Gambling",           "abbr": "gamb"},
+      "Insi":     { "long": "Insight",            "abbr": "insi"},
+      "Intim":    { "long": "Intimidate",         "abbr": "intim"},
+      "Street":   { "long": "Streetwise",         "abbr": "street"},
+
+      "Navi":     { "long": "Navigation",         "abbr": "navi"},
+      "Rep":      { "long": "Repair",             "abbr": "rep"},
+      "SpacePilo":{ "long": "Spaceship Piloting", "abbr": "spacePilo"},
+      "SpaceWeap":{ "long": "Spaceship Weapons",  "abbr": "spaceWeap"},
+      "Syst":     { "long": "Systems",            "abbr": "syst"},
+      "VehiPilo": { "long": "Vehicle Piloting",   "abbr": "vehiPilo"},
+      "VehiWeap": { "long": "Vehicle Weapons",    "abbr": "vehiWeap"},
+
+      "Athl":     { "long": "Athletics",          "abbr": "athl"},
+      "Perc":     { "long": "Perception",         "abbr": "perc"},
+      "Secur":    { "long": "Security",           "abbr": "secur"},
+      "SlOfHan":  { "long": "Sleight of Hand",    "abbr": "slOfHan"},
+      "Steal":    { "long": "Stealth",            "abbr": "steal"},
+      "Surv":     { "long": "Survival",           "abbr": "surv"}
     },
 
     "SheetLabels": {

@@ -50,7 +50,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       this.abilities[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilities[key]) ?? key;
     }
 
-    
+    //Personal Combat
     for (const key in this.personalCombat) {
       // Calculate the bonus using edrpg rules.
       this.personalCombat[key].mod = Math.floor(this.personalCombat[key].value/10);
@@ -58,11 +58,36 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       this.personalCombat[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.personalCombat[key]) ?? key;
     }
 
+    //Intelligence
     for (const key in this.intelligence) {
       // Calculate the bonus using edrpg rules.
       this.intelligence[key].mod = Math.floor(this.intelligence[key].value/10);
       // Handle ability label localization.
       this.intelligence[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.intelligence[key]) ?? key;
+    }
+
+    //Social Skills
+    for (const key in this.socialSkills) {
+      // Calculate the bonus using edrpg rules.
+      this.socialSkills[key].mod = Math.floor(this.socialSkills[key].value/10);
+      // Handle ability label localization.
+      this.socialSkills[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.socialSkills[key]) ?? key;
+    }
+
+    //Vehicle Skills
+    for (const key in this.vehicleSkills) {
+      // Calculate the bonus using edrpg rules.
+      this.vehicleSkills[key].mod = Math.floor(this.vehicleSkills[key].value/10);
+      // Handle ability label localization.
+      this.vehicleSkills[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.vehicleSkills[key]) ?? key;
+    }
+
+    //Espionage
+    for (const key in this.espionage) {
+      // Calculate the bonus using edrpg rules.
+      this.espionage[key].mod = Math.floor(this.espionage[key].value/10);
+      // Handle ability label localization.
+      this.espionage[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.espionage[key]) ?? key;
     }
   }
 
