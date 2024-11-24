@@ -29,6 +29,14 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       return obj;
     }, {}));
 
+    // Iterate over ability names and create a new SchemaField for each.
+    schema.intelligence = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.intelligence).reduce((obj, ability) => {
+      obj[ability] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+      });
+      return obj;
+    }, {}));
+
     return schema;
   }
 
@@ -48,6 +56,13 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       this.personalCombat[key].mod = Math.floor(this.personalCombat[key].value/10);
       // Handle ability label localization.
       this.personalCombat[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.personalCombat[key]) ?? key;
+    }
+
+    for (const key in this.intelligence) {
+      // Calculate the bonus using edrpg rules.
+      this.intelligence[key].mod = Math.floor(this.intelligence[key].value/10);
+      // Handle ability label localization.
+      this.intelligence[key].label = game.i18n.localize(CONFIG.EDRPG_SYSTEM.abilityGroups.intelligence[key]) ?? key;
     }
   }
 

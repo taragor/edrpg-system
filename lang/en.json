@@ -14,7 +14,16 @@
       "HvyWeap":  { "long": "Heavy Weapons",      "abbr": "hvyWeap"},
       "KinWeap":  { "long": "Kinetic Weapons",    "abbr": "kinWeap"},
       "MelWeap":  { "long": "Melee Weapons",      "abbr": "melWeap"},
-      "Parry":    { "long": "Parry",              "abbr": "parry"}
+      "Parry":    { "long": "Parry",              "abbr": "parry"},
+
+      "comp":     { "long": "Computer",           "abbr": "comp"},
+      "cultLaw":  { "long": "Culture & Law",      "abbr": "cultLaw"},
+      "cyber":    { "long": "Cyber",              "abbr": "cyber"},
+      "med":      { "long": "Medicine",           "abbr": "med"},
+      "planKnow": { "long": "Planetary Knowledge","abbr": "planKnow"},
+      "science":  { "long": "Science",            "abbr": "science"},
+      "tact":     { "long": "Tactics",            "abbr": "tact"},
+      "trad":     { "long": "Trading",            "abbr": "trad"}
     },
 
     "SheetLabels": {
