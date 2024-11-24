@@ -8,7 +8,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
     const schema = super.defineSchema();
 
     schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
+      rankpoints: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1 })
       }),
     });
