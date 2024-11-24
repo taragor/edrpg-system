@@ -15,15 +15,14 @@
       "KinWeap":  { "long": "Kinetic Weapons",    "abbr": "kinWeap"},
       "MelWeap":  { "long": "Melee Weapons",      "abbr": "melWeap"},
       "Parry":    { "long": "Parry",              "abbr": "parry"},
-
-      "comp":     { "long": "Computer",           "abbr": "comp"},
-      "cultLaw":  { "long": "Culture & Law",      "abbr": "cultLaw"},
-      "cyber":    { "long": "Cyber",              "abbr": "cyber"},
-      "med":      { "long": "Medicine",           "abbr": "med"},
-      "planKnow": { "long": "Planetary Knowledge","abbr": "planKnow"},
-      "science":  { "long": "Science",            "abbr": "science"},
-      "tact":     { "long": "Tactics",            "abbr": "tact"},
-      "trad":     { "long": "Trading",            "abbr": "trad"}
+      "Comp":     { "long": "Computer",           "abbr": "comp"},
+      "CultLaw":  { "long": "Culture & Law",      "abbr": "cultLaw"},
+      "Cyber":    { "long": "Cyber",              "abbr": "cyber"},
+      "Med":      { "long": "Medicine",           "abbr": "med"},
+      "PlanKnow": { "long": "Planetary Knowledge","abbr": "planKnow"},
+      "Science":  { "long": "Science",            "abbr": "science"},
+      "Tact":     { "long": "Tactics",            "abbr": "tact"},
+      "Trad":     { "long": "Trading",            "abbr": "trad"}
     },
 
     "SheetLabels": {
