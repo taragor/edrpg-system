@@ -75,11 +75,12 @@
           </div>
           
           <div class="persCombat flexcol">
-            {{#each system.abilityGroups.personalCombat as |ability key|}}
+            <h2>Personal Combat</h2>
+            {{#each system.personalCombat as |ability key|}}
             <div class="persCombat flexrow flex-group-center">
-              <label for="system.abilityGroups.personalCombat.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@abilityGroups.personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.personalCombat key)}}">{{localize (lookup @root.config.abilities.personalCombat key)}}</label>
-              <input type="text" name="system.abilityGroups.personalCombat.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d10+@abilityGroups.personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.personalCombat key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <label for="system.personalCombat.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.personalCombat key)}}">{{localize (lookup @root.config.abilityGroups.personalCombat key)}}</label>
+              <input type="text" name="system.personalCombat.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              <span class="ability-mod rollable" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.personalCombat key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
             </div>
             {{/each}}
           </div>

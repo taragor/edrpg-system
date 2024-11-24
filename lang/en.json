@@ -6,9 +6,7 @@
       "Dex": { "long": "Dexterity", "abbr": "dex" },
       "Int": { "long": "Intelligence", "abbr": "int" },
       "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
-    },
-    "Ability.personalCombat":{
+      "Cha": { "long": "Charisma", "abbr": "cha" },
       "Dodge":    { "long": "Dodge",              "abbr": "dodge"},
       "EnWeap":   { "long": "Energy Weapons",     "abbr": "enWeap"},
       "Fighting": { "long": "Fighting",           "abbr": "fight"},
@@ -18,6 +16,7 @@
       "MelWeap":  { "long": "Melee Weapons",      "abbr": "melWeap"},
       "Parry":    { "long": "Parry",              "abbr": "parry"}
     },
+
     "SheetLabels": {
       "Actor": "edrpgSystem Actor Sheet",
       "Item": "edrpgSystem Item Sheet"
