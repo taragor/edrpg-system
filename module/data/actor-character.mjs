@@ -36,7 +36,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
     schema.socialSkills = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.socialSkills).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-        check: new fields.BooleanField({initial: true}),
+        check: new fields.BooleanField({}),
       });
       return obj;
     }, {}));
@@ -45,7 +45,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
     schema.vehicleSkills = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.vehicleSkills).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-        check: new fields.BooleanField({initial: true}),
+        check: new fields.BooleanField({}),
       });
       return obj;
     }, {}));
@@ -54,7 +54,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
     schema.espionage = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.espionage).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-        check: new fields.BooleanField({initial: true}),
+        check: new fields.BooleanField({}),
       });
       return obj;
     }, {}));
