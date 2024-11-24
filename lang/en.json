@@ -1,12 +1,6 @@
 {
   "EDRPG_SYSTEM": {
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" },
       "Dodge":    { "long": "Dodge",              "abbr": "dodge"},
       "EnWeap":   { "long": "Energy Weapons",     "abbr": "enWeap"},
       "Fighting": { "long": "Fighting",           "abbr": "fight"},
