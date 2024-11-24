@@ -8,6 +8,16 @@
       "Wis": { "long": "Wisdom", "abbr": "wis" },
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },
+    "Ability.personalCombat":{
+      "Dodge":    { "long": "Dodge",              "abbr": "dodge"},
+      "EnWeap":   { "long": "Energy Weapons",     "abbr": "enWeap"},
+      "Fighting": { "long": "Fighting",           "abbr": "fight"},
+      "Grenade":  { "long": "Grenade",            "abbr": "gren"},
+      "HvyWeap":  { "long": "Heavy Weapons",      "abbr": "hvyWeap"},
+      "KinWeap":  { "long": "Kinetic Weapons",    "abbr": "kinWeap"},
+      "MelWeap":  { "long": "Melee Weapons",      "abbr": "melWeap"},
+      "Parry":    { "long": "Parry",              "abbr": "parry"}
+    },
     "SheetLabels": {
       "Actor": "edrpgSystem Actor Sheet",
       "Item": "edrpgSystem Item Sheet"

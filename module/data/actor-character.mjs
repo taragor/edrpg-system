@@ -21,6 +21,14 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       return obj;
     }, {}));
 
+    // Iterate over ability names and create a new SchemaField for each.
+    schema.abilityGroups.personalCombat = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.personalCombat).reduce((obj, ability) => {
+      obj[ability] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+      });
+      return obj;
+    }, {}));
+
     return schema;
   }
 

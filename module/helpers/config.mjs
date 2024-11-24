@@ -21,3 +21,25 @@ EDRPG_SYSTEM.abilityAbbreviations = {
   wis: 'EDRPG_SYSTEM.Ability.Wis.abbr',
   cha: 'EDRPG_SYSTEM.Ability.Cha.abbr',
 };
+
+EDRPG_SYSTEM.abilityGroups.personalCombat = {
+  dodge:    'EDRPG_SYSTEM.Ability.Dodge.long',
+  enWeap:   'EDRPG_SYSTEM.Ability.EnWeap.long',
+  fighting: 'EDRPG_SYSTEM.Ability.Fighting.long',
+  grenade:  'EDRPG_SYSTEM.Ability.Grenade.long',
+  hvyWeap:  'EDRPG_SYSTEM.Ability.HvyWeap.long',
+  kinWeap:  'EDRPG_SYSTEM.Ability.KinWeap.long',
+  melWeap:  'EDRPG_SYSTEM.Ability.MelWeap.long',
+  parry:    'EDRPG_SYSTEM.Ability.Parry.long',
+};
+
+EDRPG_SYSTEM.abilityGroupAbbreviations.personalCombat = {
+  dodge:    'EDRPG_SYSTEM.Ability.Dodge.abbr',
+  enWeap:   'EDRPG_SYSTEM.Ability.EnWeap.abbr',
+  fighting: 'EDRPG_SYSTEM.Ability.Fighting.abbr',
+  grenade:  'EDRPG_SYSTEM.Ability.Grenade.abbr',
+  hvyWeap:  'EDRPG_SYSTEM.Ability.HvyWeap.abbr',
+  kinWeap:  'EDRPG_SYSTEM.Ability.KinWeap.abbr',
+  melWeap:  'EDRPG_SYSTEM.Ability.MelWeap.abbr',
+  parry:    'EDRPG_SYSTEM.Ability.Parry.abbr',
+};

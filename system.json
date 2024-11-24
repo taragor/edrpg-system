@@ -42,6 +42,6 @@
   "background": "systems/edrpg-system/assets/anvil-impact.png",
   "gridDistance": 1,
   "gridUnits": "m",
-  "primaryTokenAttribute": "health",
+  "primaryTokenAttribute": "endurance",
   "secondaryTokenAttribute": "shield"
 }
