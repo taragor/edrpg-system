@@ -116,7 +116,7 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
       }
     }
 
-    data.lvl = this.attributes.level.value;
+    data.rankpoints = this.attributes.rankpoints.value;
 
     return data
   }
