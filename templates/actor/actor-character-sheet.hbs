@@ -99,6 +99,7 @@
               <label for="system.personalCombat.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.personalCombat key)}}">{{localize (lookup @root.config.abilityGroups.personalCombat key)}}</label>
               <input type="text" name="system.personalCombat.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.personalCombat key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.personalCombat.{{key}}.check" value="{{ability.check}}"/>
             </div>
             {{/each}}
           </div>
@@ -111,6 +112,7 @@
               <label for="system.intelligence.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.intelligence key)}}">{{localize (lookup @root.config.abilityGroups.intelligence key)}}</label>
               <input type="text" name="system.intelligence.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.intelligence key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.intelligence.{{key}}.check" value="{{ability.check}}"/>
             </div>
             {{/each}}
           </div>
@@ -123,6 +125,7 @@
               <label for="system.socialSkills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.socialSkills key)}}">{{localize (lookup @root.config.abilityGroups.socialSkills key)}}</label>
               <input type="text" name="system.socialSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.socialSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.socialSkills.{{key}}.check" value="{{ability.check}}"/>
             </div>
             {{/each}}
           </div>
@@ -135,6 +138,7 @@
               <label for="system.vehicleSkills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@vehicleSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}">{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}</label>
               <input type="text" name="system.vehicleSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@vehicleSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.vehicleSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.vehicleSkills.{{key}}.check" value="{{ability.check}}"/>
             </div>
             {{/each}}
           </div>
@@ -147,6 +151,7 @@
               <label for="system.espionage.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d10+@espionage.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.espionage key)}}">{{localize (lookup @root.config.abilityGroups.espionage key)}}</label>
               <input type="text" name="system.espionage.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@espionage.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.espionage key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <input type="checkbox" name="system.espionage.{{key}}.check" value="{{ability.check}}"/>
             </div>
             {{/each}}
           </div>

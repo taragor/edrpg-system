@@ -14,21 +14,51 @@ export default class edrpgSystemCharacter extends edrpgSystemActorBase {
     });
 
     // Iterate over ability names and create a new SchemaField for each.
+    //Personal Combat
     schema.personalCombat = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.personalCombat).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        check: new fields.BooleanField({}),
       });
       return obj;
     }, {}));
 
-    // Iterate over ability names and create a new SchemaField for each.
+    //Intelligence
     schema.intelligence = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.intelligence).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        check: new fields.BooleanField({}),
       });
       return obj;
     }, {}));
 
+    //Social Skills
+    schema.socialSkills = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.socialSkills).reduce((obj, ability) => {
+      obj[ability] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        check: new fields.BooleanField({}),
+      });
+      return obj;
+    }, {}));
+
+    //Vehicle Skills
+    schema.vehicleSkills = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.vehicleSkills).reduce((obj, ability) => {
+      obj[ability] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        check: new fields.BooleanField({}),
+      });
+      return obj;
+    }, {}));
+
+    //Espionage
+    schema.espionage = new fields.SchemaField(Object.keys(CONFIG.EDRPG_SYSTEM.abilityGroups.espionage).reduce((obj, ability) => {
+      obj[ability] = new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        check: new fields.BooleanField({}),
+      });
+      return obj;
+    }, {}));
+    
     return schema;
   }
 
