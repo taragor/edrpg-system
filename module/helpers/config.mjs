@@ -22,6 +22,9 @@ EDRPG_SYSTEM.abilityAbbreviations = {
   cha: 'EDRPG_SYSTEM.Ability.Cha.abbr',
 };
 
+EDRPG_SYSTEM.abilityGroups = {};
+EDRPG_SYSTEM.abilityGroupAbbreviations = {};
+
 EDRPG_SYSTEM.abilityGroups.personalCombat = {
   dodge:    'EDRPG_SYSTEM.Ability.Dodge.long',
   enWeap:   'EDRPG_SYSTEM.Ability.EnWeap.long',
