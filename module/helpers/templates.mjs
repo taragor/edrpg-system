@@ -9,6 +9,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/edrpg-system/templates/actor/parts/actor-features.hbs',
     'systems/edrpg-system/templates/actor/parts/actor-items.hbs',
     'systems/edrpg-system/templates/actor/parts/actor-spells.hbs',
+    'systems/edrpg-system/templates/actor/parts/actor-karma.hbs',
     'systems/edrpg-system/templates/actor/parts/actor-effects.hbs',
     // Item partials
     'systems/edrpg-system/templates/item/parts/item-effects.hbs',
