@@ -105,6 +105,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const features = [];
+    const karma = [];
     const spells = {
       0: [],
       1: [],
@@ -135,12 +136,17 @@ export class edrpgSystemActorSheet extends ActorSheet {
           spells[i.system.spellLevel].push(i);
         }
       }
+      // Append to karma.
+      else if (i.type === 'karma_capability') {
+        karma.push(i);
+      }
     }
 
     // Assign and return
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.karma_capabilitys = karma;
   }
 
   /* -------------------------------------------- */
