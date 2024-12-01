@@ -8,3 +8,4 @@ export {default as edrpgSystemItemBase} from "./base-item.mjs";
 export {default as edrpgSystemItem} from "./item-item.mjs";
 export {default as edrpgSystemFeature} from "./item-feature.mjs";
 export {default as edrpgSystemSpell} from "./item-spell.mjs";
+export {default as edrpgSystemKarma} from "./item-karma.mjs";

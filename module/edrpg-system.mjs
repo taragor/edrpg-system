@@ -49,7 +49,8 @@ Hooks.once('init', function () {
   CONFIG.Item.dataModels = {
     item: models.edrpgSystemItem,
     feature: models.edrpgSystemFeature,
-    spell: models.edrpgSystemSpell
+    spell: models.edrpgSystemSpell,
+    karma_capability: models.edrpgSystemKarma
   }
 
   // Active Effects are never copied to the Actor,

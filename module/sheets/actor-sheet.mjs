@@ -146,7 +146,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
     context.gear = gear;
     context.features = features;
     context.spells = spells;
-    context.karma_capabilitys = karma;
+    context.karma_capability = karma;
   }
 
   /* -------------------------------------------- */
