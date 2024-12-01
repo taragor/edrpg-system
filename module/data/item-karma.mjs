@@ -11,7 +11,7 @@ export default class edrpgSystemKarma extends edrpgSystemItemBase {
 
     // Break down roll formula into three independent fields
     schema.roll = new fields.SchemaField({
-      diceNum: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      diceNum: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       diceSize: new fields.StringField({ initial: "d10" }),
       diceBonus: new fields.StringField({ initial: "" })
     })
