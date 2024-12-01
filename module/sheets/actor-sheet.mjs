@@ -283,7 +283,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     let roll_formular = "";
 
-    mesg_data.flavor = "<b>" + item.name + "</b><br/><br/><i>Karma Cost: " + item.system.karma_cost.toString() + "</i><br/>";
+    mesg_data.flavor = "<b>" + item.name + "</b><br/>" + "<img src='" + item.img + "' width='40' height='40'/>" + "<br/><i>Karma Cost: " + item.system.karma_cost.toString() + "</i><br/>";
 
     //Enough Karma?
     if (this.actor.system.karma.value >= item.system.karma_cost){
