@@ -183,6 +183,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
+    html.on('click', '.skillRoll', this.skillToRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -220,6 +221,11 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
+  }
+
+  rollSkillCheck(skillToRoll){
+    let attribure = skillToRoll.attribure;
+
   }
 
   /**
