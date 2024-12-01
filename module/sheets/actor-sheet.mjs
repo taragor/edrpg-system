@@ -283,26 +283,36 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     let roll_formular = "";
 
+    mesg_data.flavor = "<b>" + item.name + "</b><br/><br/><i>Karma Cost: " + item.system.karma_cost.toString() + "</i><br/>";
+
     //Enough Karma?
     if (this.actor.system.karma.value >= item.system.karma_cost){
       //display description
-      mesg_data.flavor = item.system.description;
+      mesg_data.flavor += item.system.description;
 
       //Decide if foundry needs to roll
       if (item.system.roll.diceNum > 0){
-        roll_formular = item.system.roll.diceNum.toString() + item.system.roll.diceSize + "+" + item.system.roll.diceBonus;
+        roll_formular = item.system.roll.diceNum.toString() + item.system.roll.diceSize;
+        if (item.system.roll.diceBonus !== ""){
+          roll_formular += "+" + item.system.roll.diceBonus;
+        }
       }
 
       //calculate new karma and reload char sheet
-      this.actor.update({ 'system.karma.value': this.actor.system.karma.value - item.system.karma_cost});
+      this.actor.update({'system.karma.value': this.actor.system.karma.value - item.system.karma_cost});
     }else{
       //display dödel message
-      mesg_data.flavor = "Nicht genug Karma! Du Dödel.";
+      mesg_data.flavor += "Nicht genug Karma! Du Dödel.";
     }
 
-    //execute roll
-    let config = new RollConfig();
-    let roll = extendedRoll(roll_formular, mesg_data, config);
-    return roll;
+    if (item.system.roll.diceNum > 0){
+      //execute roll
+      let roll = new Roll(roll_formular);
+      roll.toMessage({...mesg_data});
+    
+      return roll;
+    }
+    let mesg = ChatMessage.create(mesg_data);
+    return mesg;
   }
 }
