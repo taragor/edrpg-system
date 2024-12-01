@@ -7,7 +7,7 @@
       <a
         class='item-control item-create'
         title='{{localize "DOCUMENT.Create" type='Karma'}}'
-        data-type='karma'
+        data-type='karma_capability'
       >
         <i class='fas fa-plus'></i>
         {{localize 'DOCUMENT.New' type='karma'}}
@@ -18,7 +18,7 @@
     <li class='item flexrow' data-item-id='{{item._id}}'>
       <div class='item-name flexrow'>
         <div class='item-image'>
-          <a class='rollable' data-roll-type='item'><img
+          <a class='use_karma'><img
               src='{{item.img}}'
               title='{{item.name}}'
               width='24'

@@ -146,7 +146,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
     context.gear = gear;
     context.features = features;
     context.spells = spells;
-    context.karma_capabilitys = karma;
+    context.karma_capability = karma;
   }
 
   /* -------------------------------------------- */
@@ -190,6 +190,9 @@ export class edrpgSystemActorSheet extends ActorSheet {
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
     html.on('click', '.skillRoll', this.skillToRoll.bind(this));
+
+    // Use Karma abilities.
+    html.on('click', '.use_karma', this._onUseKarma.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -263,6 +266,26 @@ export class edrpgSystemActorSheet extends ActorSheet {
         rollMode: game.settings.get('core', 'rollMode'),
       });
       return roll;
+    }
+  }
+
+  _onUseKarma(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    const itemId = element.closest('.item').dataset.itemId;
+    const item = this.actor.items.get(itemId);
+
+    if (this.actor.karma.value >= item.karma_cost){
+      if (item.roll.diceNum > 0){
+        console.log("hier müsste was gwürfelt werden");
+      }else{
+        console.log("hier nicht");
+      }
+      this.actor.karma.value = this.actor.karma.value - item.karma_cost; 
+    }else{
+      console.log("nicht genug karma");
     }
   }
 }
