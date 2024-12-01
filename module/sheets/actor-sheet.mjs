@@ -189,7 +189,7 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
-    html.on('click', '.skillRoll', this.skillToRoll.bind(this));
+    html.on('click', '.skillRoll', this.rollSkillCheck.bind(this));
 
     // Use Karma abilities.
     html.on('click', '.use_karma', this._onUseKarma.bind(this));
