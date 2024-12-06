@@ -71,13 +71,13 @@ export class edrpgSystemItemSheet extends ItemSheet {
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);
 
-    context.modifiers = 
+    context.modifier = this.item.system.modifiers;
 
     // create list of skills for modifier dropdown
-    skills = [];
-    for(abilityGroup in CONFIG.EDRPG_SYSTEM.abilityGroups){
-      for(ability in abilityGroup){
-        skills.push(ability)
+    let skills = [];
+    for(let abilityGroup in CONFIG.EDRPG_SYSTEM.abilityGroups){
+      for(let ability in CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup]){
+        skills.push({key: CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup][ability], label: CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup][ability]});
       }
     }
     context.skills = skills;
@@ -100,10 +100,17 @@ export class edrpgSystemItemSheet extends ItemSheet {
     html.on('click', '.effect-control', (ev) =>
       onManageActiveEffect(ev, this.item)
     );
+
+    html.on("click", ".modifier-create", (ev) => 
+      this._onCreateModifier(ev, this.item)
+    );
   }
 
-  _onCreateModifier(event){
+  _onCreateModifier(event, item){
     event.preventDefault();
-    this.item.system.modifiers.push({id: foundry.utils.randomID()});
+    //item.system.modifiers.push({id: foundry.utils.randomID()});
+    let newModifiers = item.system.modifiers;
+    newModifiers.push({id:foundry.utils.randomID()});
+    item.update({"system.modifiers": newModifiers});
   }
 }

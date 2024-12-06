@@ -117,8 +117,9 @@
         {{#each modifier as |mod id|}}
           <li class='modifier flexrow' data-modifier-id='{{mod.id}}'>
             <div class='modifier-skill'>
+              
               <select name="skill">
-                {{selectOptions skills selected=mod.skill localize=true}}
+               {{selectOptions ../skills selected=mod.skill nameAttr="key" labelAttr="label" localize=true}}
               </select>
             </div>
             <div class='item-formula item-prop'>
