@@ -71,6 +71,17 @@ export class edrpgSystemItemSheet extends ItemSheet {
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);
 
+    context.modifiers = 
+
+    // create list of skills for modifier dropdown
+    skills = [];
+    for(abilityGroup in CONFIG.EDRPG_SYSTEM.abilityGroups){
+      for(ability in abilityGroup){
+        skills.push(ability)
+      }
+    }
+    context.skills = skills;
+
     return context;
   }
 
@@ -89,5 +100,10 @@ export class edrpgSystemItemSheet extends ItemSheet {
     html.on('click', '.effect-control', (ev) =>
       onManageActiveEffect(ev, this.item)
     );
+  }
+
+  _onCreateModifier(event){
+    event.preventDefault();
+    this.item.system.modifiers.push({id: foundry.utils.randomID()});
   }
 }

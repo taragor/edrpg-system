@@ -40,6 +40,7 @@
   <nav class='sheet-tabs tabs' data-group='primary'>
     <a class='item' data-tab='description'>Description</a>
     <a class='item' data-tab='attributes'>Attributes</a>
+    <a class='item' data-tab='modifiers'>Modifiers</a>
   </nav>
 
   {{! Sheet Body }}
@@ -94,6 +95,46 @@
         </div>
 
       </div>
+    </div>
+
+    {{! Modifiers Tab}}
+    <div class="tab modifiers" data-group="primary" data-tab="modifiers">
+      <ol class='modifiers-list'>
+        <li class='modifier flexrow modifiers-header'>
+          <div class='modifier-skill'>Skill</div>
+          <div class='modifier-formula'>Bonus</div>
+          <div class='modifier-controls'>
+            <a
+              class='modifier-control modifier-create'
+              title='Add Modifier'
+              data-type='itemSkillModifier'
+            >
+              <i class='fas fa-plus'></i>
+              Add Modifier
+            </a>
+          </div>
+        </li>
+        {{#each modifier as |mod id|}}
+          <li class='modifier flexrow' data-modifier-id='{{mod.id}}'>
+            <div class='modifier-skill'>
+              <select name="skill">
+                {{selectOptions skills selected=mod.skill localize=true}}
+              </select>
+            </div>
+            <div class='item-formula item-prop'>
+              <input type="number" data-dtype="number" name="bonus" value={{mod.value}}/>
+            </div>
+            <div class='item-controls'>
+              <a
+                class='item-control modifier-delete'
+                title='{{localize "DOCUMENT.Delete" type='Item'}}'
+              >
+                <i class='fas fa-trash'></i>
+              </a>
+            </div>
+          </li>
+        {{/each}}
+      </ol>
     </div>
   </section>
 </form>
