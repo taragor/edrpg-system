@@ -104,6 +104,6 @@ export class edrpgSystemItemSheet extends ItemSheet {
 
   _onCreateModifier(event){
     event.preventDefault();
-    this.item.system.modifiers.push({id: foundry.utils.randomID()})
+    this.item.system.modifiers.push({id: foundry.utils.randomID()});
   }
 }
