@@ -9,10 +9,6 @@ export default class edrpgSystemItem extends edrpgSystemItemBase {
 
     schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
-
-    schema.equipped = new fields.BooleanField({});
-    schema.useBonus = new fields.BooleanField({});
-
     
 
     // Break down roll formula into three independent fields

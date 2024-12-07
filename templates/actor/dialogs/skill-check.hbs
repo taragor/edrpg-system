@@ -1,5 +1,5 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-    {{skill}}
+    {{localize skill}}
     {{#each equippedItems as |item id|}}
     <div class="equppedItems flexrow flex-group-center">
         <div class='item-name'>
@@ -12,10 +12,18 @@
         />
         </div>
         <h4>{{item.name}}</h4>
+        <div class="item-bonuses">
+            {{#each item.system.modifiers as |mod id|}}
+                {{#ifEquals mod.skill ../../skill}}
+                    <input type="checkbox" data-modifier-id="{{mod.id}}" data-item-id="{{item.id}}" class="itemModifierUse" {{checked mod.useBonus}}>
+                    {{mod.value}}
+                    <br/>
+                {{/ifEquals}}
+            {{/each}}
+        </div>
       </div>
-      <input type="checkbox" name="system."
+      
     </div>
     {{/each}}
-    <input type="text" name="rollCustomBonus" value="" />
-    <button class="confirmRoll">Confirm</button>
+    Custom: <input type="text" name="rollCustomBonus" value="" />
 </form>

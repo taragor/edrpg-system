@@ -2,6 +2,7 @@ import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
+import { preloadHandlebarsTemplates } from '../helpers/templates.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -189,10 +190,13 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
-    html.on('click', '.skillRoll', this.rollSkillCheck.bind(this));
+    html.on('click', '.skillRoll', this._rollSkillCheck.bind(this));
 
     // Use Karma abilities.
     html.on('click', '.use_karma', this._onUseKarma.bind(this));
+
+    // changed item equipped
+    html.on('click', '.itemEquipped', this._onItemEquiped.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -203,6 +207,12 @@ export class edrpgSystemActorSheet extends ActorSheet {
         li.addEventListener('dragstart', handler, false);
       });
     }
+  }
+
+  _onItemEquiped(event){
+    event.preventDefault();
+    const item = this.actor.items.get(event.target.dataset.itemId);
+    item.update({"system.equipped": event.target.checked});
   }
 
   /**
@@ -232,9 +242,48 @@ export class edrpgSystemActorSheet extends ActorSheet {
     return await Item.create(itemData, { parent: this.actor });
   }
 
-  rollSkillCheck(skillToRoll){
-    let attribure = skillToRoll.attribure;
+  async _rollSkillCheck(skillToRoll){
+    let context =  {}
+    context.skill = skillToRoll.target.dataset.skill;
 
+    //register handlebar helper for skill display
+    Handlebars.registerHelper("ifEquals", function(arg1, arg2, options){
+      return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+    });
+
+
+    const relevantItems = this.actor.items.filter(item => {
+      const hasRelevantBonus = (item.system.modifiers.find(mod => {
+        return mod.skill === context.skill;
+      }) !== undefined);
+      return hasRelevantBonus && item.system.equipped;
+    });
+
+    context.equippedItems = relevantItems;
+
+
+    const dialogContent = await renderTemplate("systems/edrpg-system/templates/actor/dialogs/skill-check.hbs", context);
+
+    new Dialog({
+      title: game.i18n.localize(context.skill),
+      content: dialogContent,
+      buttons: {
+        confirm: {
+          label: "Confirm",
+          callback: (html) => this._executeRoll(html, context.skill)
+        }
+      }
+    }).render(true);
+
+  }
+
+  _onModifierUse(event){
+    event.preventDefault();
+    
+  }
+
+  _executeRoll(html, skill){
+    console.log("executing roll");
   }
 
   /**

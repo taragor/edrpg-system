@@ -12,6 +12,10 @@ export default class edrpgSystemItemBase extends edrpgSystemDataModel {
 
     schema.modifiers = new fields.ArrayField(new fields.SchemaField(itemSkillModifier()));
 
+    schema.equipped = new fields.BooleanField({initial: true});
+    
+
+
     return schema;
   }
 
