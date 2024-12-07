@@ -104,6 +104,18 @@ export class edrpgSystemItemSheet extends ItemSheet {
     html.on("click", ".modifier-create", (ev) => 
       this._onCreateModifier(ev, this.item)
     );
+
+    html.on("change", ".modifierSkillSelection", (ev) =>
+      this._onEditSkillModifierSkill(ev, this.item)
+    );
+
+    html.on("change", ".skillModifierValue", (ev) =>
+      this._onEditSkillModifierValue(ev, this.item)
+    );
+
+    html.on("click", ".modifier-delete", (ev) => 
+      this._onDeleteSkillModifier(ev, this.item)
+    );
   }
 
   _onCreateModifier(event, item){
@@ -111,6 +123,43 @@ export class edrpgSystemItemSheet extends ItemSheet {
     //item.system.modifiers.push({id: foundry.utils.randomID()});
     let newModifiers = item.system.modifiers;
     newModifiers.push({id:foundry.utils.randomID()});
+    item.update({"system.modifiers": newModifiers});
+  }
+
+  _onEditSkillModifierSkill(event, item){
+    event.preventDefault();
+    let newSkill = event.target.selectedOptions[0].value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].skill = newSkill;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onEditSkillModifierValue(event, item){
+    event.preventDefault();
+    let newValue = event.target.value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].value = newValue;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onDeleteSkillModifier(event, item){
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    let newModifiers = modifiers.filter(mod => {
+      return mod.id !== targetModifierId;
+    });
     item.update({"system.modifiers": newModifiers});
   }
 }
