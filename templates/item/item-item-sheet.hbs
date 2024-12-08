@@ -34,9 +34,6 @@
         </div>
       </div>
     </div>
-    <select name="skill">
-      {{selectOptions skills selected="1" nameAttr="key" labelAttr="label"}}
-    </select>
   </header>
 
   {{! Sheet Tab Navigation }}
@@ -104,8 +101,10 @@
     <div class="tab modifiers" data-group="primary" data-tab="modifiers">
       <ol class='modifiers-list'>
         <li class='modifier flexrow modifiers-header'>
+          <div class='modifier-Use'>Use?</div>
+          <div class='modifier-Name'>Name</div>
           <div class='modifier-skill'>Skill</div>
-          <div class='modifier-formula'>Bonus</div>
+          <div class='modifier-formula'>Modifier</div>
           <div class='modifier-controls'>
             <a
               class='modifier-control modifier-create'
@@ -120,9 +119,14 @@
         {{#each modifier as |mod id|}}
           <li class='modifier flexrow' data-modifier-id='{{mod.id}}'>
             <div class='modifier-skill'>
-              
+              <input type="checkbox" data-modifier-id="{{mod.id}}" data-item-id="{{item.id}}" class="itemModifierUse" data-modifier-id="{{mod.id}}"" {{checked mod.useBonus}}>
+            </div>
+            <div>
+              <input type="text" data-dtype="string" class="skillModifierName" value="{{mod.name}}" data-modifier-id="{{mod.id}}"/>
+            </div>
+            <div>
               <select name="skill" class="modifierSkillSelection" data-modifier-id={{mod.id}}>
-               {{selectOptions ../skills selected=mod.skill nameAttr="key" labelAttr="label" localize=true}}
+               {{selectOptions ../skills selected=mod.skill valueAttr="key" labelAttr="label" localize=true}}
               </select>
             </div>
             <div class='item-formula item-prop'>

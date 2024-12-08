@@ -3,26 +3,35 @@
     {{#each equippedItems as |item id|}}
     <div class="equppedItems flexrow flex-group-center">
         <div class='item-name'>
-        <div class='item-image'>
-        <img
-            src='{{item.img}}'
-            title='{{item.name}}'
-            width='24'
-            height='24'
-        />
+            <div class='item-image'>
+                <img
+                    src='{{item.img}}'
+                    title='{{item.name}}'
+                    width='24'
+                    height='24'
+                />
+            </div>
         </div>
-        <h4>{{item.name}}</h4>
+        <div>
+            {{item.name}}
+        </div>
         <div class="item-bonuses">
             {{#each item.system.modifiers as |mod id|}}
                 {{#ifEquals mod.skill ../../skill}}
-                    <input type="checkbox" data-modifier-id="{{mod.id}}" data-item-id="{{item.id}}" class="itemModifierUse" {{checked mod.useBonus}}>
-                    {{mod.value}}
-                    <br/>
+                    <div class="flexrow flex-group-center">
+                        <div>
+                            <input type="checkbox" data-modifier-id="{{mod.id}}" data-item-id="{{item.id}}" class="itemModifierUse" {{checked mod.useBonus}}>
+                        </div>
+                        <div>
+                            {{mod.name}}
+                        </div>
+                        <div>
+                            {{mod.value}}
+                        </div>
+                    </div>
                 {{/ifEquals}}
             {{/each}}
         </div>
-      </div>
-      
     </div>
     {{/each}}
     Custom: <input type="number" class="rollCustomBonus" value=""/>

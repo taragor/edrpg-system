@@ -113,6 +113,14 @@ export class edrpgSystemItemSheet extends ItemSheet {
       this._onEditSkillModifierValue(ev, this.item)
     );
 
+    html.on("change", ".skillModifierName", (ev) =>
+      this._onEditSkillModifierName(ev, this.item)
+    );
+
+    html.on("change", ".itemModifierUse", (ev) =>
+      this._onEditSkillModifierUse(ev, this.item)
+    );
+
     html.on("click", ".modifier-delete", (ev) => 
       this._onDeleteSkillModifier(ev, this.item)
     );
@@ -139,6 +147,34 @@ export class edrpgSystemItemSheet extends ItemSheet {
     }
     item.update({"system.modifiers": modifiers}); 
   }
+
+  _onEditSkillModifierName(event, item){
+    event.preventDefault();
+    let newName = event.target.value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].name = newName;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onEditSkillModifierUse(event, item){
+    event.preventDefault();
+    let checked = event.target.checked;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].useModifier = checked;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }  
 
   _onEditSkillModifierValue(event, item){
     event.preventDefault();
