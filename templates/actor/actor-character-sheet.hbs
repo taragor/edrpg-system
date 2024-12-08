@@ -69,7 +69,6 @@
             <h2>Personal Combat</h2>
             {{#each system.personalCombat as |ability key|}}
             <div class="persCombat flexrow flex-group-center">
-              {{log ability}}
               <label for="system.personalCombat.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{lookup @root.config.abilityGroups.personalCombat key}}" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.personalCombat key)}}">{{localize (lookup @root.config.abilityGroups.personalCombat key)}}</label>
               <input type="text" name="system.personalCombat.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@personalCombat.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.personalCombat key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
@@ -83,7 +82,7 @@
             <h2>Vehicle Skills</h2>
             {{#each system.vehicleSkills as |ability key|}}
             <div class="vehicleSkills flexrow flex-group-center">
-              <label for="system.vehicleSkills.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{ability}}" data-roll="d10+@vehicleSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}">{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}</label>
+              <label for="system.vehicleSkills.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{lookup @root.config.abilityGroups.vehicleSkills key}}" data-roll="d10+@vehicleSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}">{{localize (lookup @root.config.abilityGroups.vehicleSkills key)}}</label>
               <input type="text" name="system.vehicleSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@vehicleSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.vehicleSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
               <input type="checkbox" name="system.vehicleSkills.{{key}}.check" {{checked ability.check}}/>
@@ -98,7 +97,7 @@
             <h2>Intelligence</h2>
             {{#each system.intelligence as |ability key|}}
             <div class="intelligence flexrow flex-group-center">
-              <label for="system.intelligence.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{ability}}" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.intelligence key)}}">{{localize (lookup @root.config.abilityGroups.intelligence key)}}</label>
+              <label for="system.intelligence.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{lookup @root.config.abilityGroups.intelligence key}}" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.intelligence key)}}">{{localize (lookup @root.config.abilityGroups.intelligence key)}}</label>
               <input type="text" name="system.intelligence.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@intelligence.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.intelligence key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
               <input type="checkbox" name="system.intelligence.{{key}}.check" {{checked ability.check}}/>
@@ -110,7 +109,7 @@
             <h2>Espionage</h2>
             {{#each system.espionage as |ability key|}}
             <div class="espionage flexrow flex-group-center">
-              <label for="system.espionage.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{ability}}" data-roll="d10+@espionage.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.espionage key)}}">{{localize (lookup @root.config.abilityGroups.espionage key)}}</label>
+              <label for="system.espionage.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{lookup @root.config.abilityGroups.espionage key}}" data-roll="d10+@espionage.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.espionage key)}}">{{localize (lookup @root.config.abilityGroups.espionage key)}}</label>
               <input type="text" name="system.espionage.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@espionage.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.espionage key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
               <input type="checkbox" name="system.espionage.{{key}}.check" {{checked ability.check}}/>
@@ -124,7 +123,7 @@
             <h2>Social Skills</h2>
             {{#each system.socialSkills as |ability key|}}
             <div class="socialSkills flexrow flex-group-center">
-              <label for="system.socialSkills.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{ability}}" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.socialSkills key)}}">{{localize (lookup @root.config.abilityGroups.socialSkills key)}}</label>
+              <label for="system.socialSkills.{{key}}.value" class="resource-label skillRoll flexlarge align-left" data-skill="{{lookup @root.config.abilityGroups.socialSkills key}}" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilityGroups.socialSkills key)}}">{{localize (lookup @root.config.abilityGroups.socialSkills key)}}</label>
               <input type="text" name="system.socialSkills.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d10+@socialSkills.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities.socialSkills key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
               <input type="checkbox" name="system.socialSkills.{{key}}.check" {{checked ability.check}}/>
