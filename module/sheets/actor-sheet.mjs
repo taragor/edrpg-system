@@ -1,7 +1,9 @@
+import { EDRPG_SYSTEM } from '../helpers/config.mjs';
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
+import { preloadHandlebarsTemplates } from '../helpers/templates.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -189,10 +191,13 @@ export class edrpgSystemActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
-    html.on('click', '.skillRoll', this.rollSkillCheck.bind(this));
+    html.on('click', '.skillRoll', this._rollSkillCheck.bind(this));
 
     // Use Karma abilities.
     html.on('click', '.use_karma', this._onUseKarma.bind(this));
+
+    // changed item equipped
+    html.on('click', '.itemEquipped', this._onItemEquiped.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -203,6 +208,12 @@ export class edrpgSystemActorSheet extends ActorSheet {
         li.addEventListener('dragstart', handler, false);
       });
     }
+  }
+
+  _onItemEquiped(event){
+    event.preventDefault();
+    const item = this.actor.items.get(event.target.dataset.itemId);
+    item.update({"system.equipped": event.target.checked});
   }
 
   /**
@@ -232,9 +243,146 @@ export class edrpgSystemActorSheet extends ActorSheet {
     return await Item.create(itemData, { parent: this.actor });
   }
 
-  rollSkillCheck(skillToRoll){
-    let attribure = skillToRoll.attribure;
+  async _rollSkillCheck(skillToRoll){
+    let context =  {}
+    context.skill = skillToRoll.target.dataset.skill;
 
+    //register handlebar helper for skill display
+    Handlebars.registerHelper("ifEquals", function(arg1, arg2, options){
+      return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+    });
+
+
+    //filter the items to get only items that are equipped and have modifiers for the skill we want to roll
+    const relevantItems = this.actor.items.filter(item => {
+      const hasRelevantBonus = (item.system.modifiers.find(mod => {
+        return (mod.skill === context.skill);
+      }) !== undefined);
+      return (hasRelevantBonus && item.system.equipped);
+    });
+
+    //write the items we just filtered into the context
+    context.equippedItems = relevantItems;
+
+    //create HTML from Template
+    const dialogContent = await renderTemplate("systems/edrpg-system/templates/actor/dialogs/skill-check.hbs", context);
+
+    new Dialog({
+      title: game.i18n.localize(context.skill),
+      content: dialogContent,
+      buttons: {
+        confirm: {
+          label: "Confirm",
+          callback: (html) => this._executeRoll(html, context.skill)
+        }
+      }
+    }).render(true);
+
+  }
+
+  _onModifierUse(event){
+    event.preventDefault();
+    
+  }
+
+  _executeRoll(html, skill){
+    console.log("executing roll");
+    
+    //First we look through the HTML of the dialog to get all the checkboxes to find out which items to actually use for this roll
+    const useBonusControls = html.find(".itemModifierUse");
+
+    //iterate through checboxes and update database
+    //this first loop iterates through the checkboxes and gets the item for the checkbox
+    for(let i = 0; i < useBonusControls.length; i++){
+      const itemId = useBonusControls[i].dataset.itemId;
+      const modifierId = useBonusControls[i].dataset.modifierId;
+      const item = this.actor.items.get(itemId);
+      let itemModifiers = item.system.modifiers;
+      //this loop goes through the modifiers of the item corresponding to the current checkbox
+      for(let mod in itemModifiers){
+        if(itemModifiers[mod].id === modifierId){
+          //When we have found the correct modifier, set its useBonus according to the checkboxes checked state
+          itemModifiers[mod].useBonus = useBonusControls[i].checked;
+        }
+      }
+      //write the updates to the DB
+      item.update({"system.modifiers": itemModifiers});
+    }
+
+    //this unfortunate block of code loops through all skills until we find the group and ability key for the ability identifier string. 
+    //this code sucks and should be deleted but I haven't found a better solution
+    let targetAbilityGroup;
+    let targetAbility;
+    for(let abilityGroup in EDRPG_SYSTEM.abilityGroups){
+      let found = false;
+      for(let ability in EDRPG_SYSTEM.abilityGroups[abilityGroup]){
+        if(EDRPG_SYSTEM.abilityGroups[abilityGroup][ability] === skill){
+          targetAbility = ability;
+          targetAbilityGroup = abilityGroup;
+          found = true;
+          break;
+        }
+      }
+      if(found){
+        break;
+      }
+    }
+
+    //We roll d10s
+    let rollFormula = "1d10";
+
+    //get the skill score of the actor for the current skill
+    let baseBonus = this.actor.system[targetAbilityGroup][targetAbility].value;
+
+  
+    let rollModifiers = []
+ 
+    //loop through the actors items and find all aplicable modifiers
+    this.actor.items.forEach((item) => {
+      item.system.modifiers.forEach((mod) => {
+        if(item.system.equipped && mod.skill == skill && mod.useBonus){
+          rollModifiers.push({"name": item.name, "value": mod.value});
+        }
+      });
+    });
+
+    //get and process the custom modifier
+    let customModifier = html.find(".rollCustomBonus")[0].value;
+    if(!isNaN(customModifier) && customModifier != ""){
+      customModifier = parseInt(customModifier);
+    } else {
+      customModifier = 0;
+    }
+    rollModifiers.push({"name": "Custom", "value": customModifier});
+
+    //calculate sum of modifiers for rolling
+    let itemBonusScore = baseBonus;
+    rollModifiers.forEach((mod) => {
+      itemBonusScore += mod.value;
+    });
+
+    let itemBonus = Math.floor(itemBonusScore/10);
+
+    //create table for roll mesage
+    let label = "<h1>" + game.i18n.localize(skill) + "</h1><br/><table><tr><th>Modifier</th><th>Value</th></tr><tr style='border-bottom:1px solid black'> <td colspan='100%'></td></tr>"; 
+    label += "<tr><td><b>" + game.i18n.localize(skill) + "</b></td><td><b>" + this.actor.system[targetAbilityGroup][targetAbility].value + "</b></td></tr>";
+    rollModifiers.forEach((mod) => {
+      label += "<tr><td>" + mod.name + "</td><td>" + mod.value + "</td></tr>";
+    });
+    label += "<tr style='border-bottom:1px solid black'> <td colspan='100%'></td></tr>";
+    label += "<tr><td>Total</td><td>" + itemBonusScore + " &rarr; <b>" + itemBonus + "</b></td></tr>"
+    label += "</table>" ;
+
+
+    //do the actual roll
+    let roll = new Roll(rollFormula + "+" + itemBonus);
+    roll.toMessage({
+      speaker: ChatMessage.getSpeaker({actor: this.actor}),
+      flavor: label,
+      rollMode: game.settings.get("core", "rollMode")
+    });
+
+    return roll;
   }
 
   /**

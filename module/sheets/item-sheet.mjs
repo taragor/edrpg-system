@@ -71,13 +71,13 @@ export class edrpgSystemItemSheet extends ItemSheet {
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);
 
-    context.modifiers = 
+    context.modifier = this.item.system.modifiers;
 
     // create list of skills for modifier dropdown
-    skills = [];
-    for(abilityGroup in CONFIG.EDRPG_SYSTEM.abilityGroups){
-      for(ability in abilityGroup){
-        skills.push(ability)
+    let skills = [];
+    for(let abilityGroup in CONFIG.EDRPG_SYSTEM.abilityGroups){
+      for(let ability in CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup]){
+        skills.push({key: CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup][ability], label: CONFIG.EDRPG_SYSTEM.abilityGroups[abilityGroup][ability]});
       }
     }
     context.skills = skills;
@@ -100,10 +100,102 @@ export class edrpgSystemItemSheet extends ItemSheet {
     html.on('click', '.effect-control', (ev) =>
       onManageActiveEffect(ev, this.item)
     );
+
+    html.on("click", ".modifier-create", (ev) => 
+      this._onCreateModifier(ev, this.item)
+    );
+
+    html.on("change", ".modifierSkillSelection", (ev) =>
+      this._onEditSkillModifierSkill(ev, this.item)
+    );
+
+    html.on("change", ".skillModifierValue", (ev) =>
+      this._onEditSkillModifierValue(ev, this.item)
+    );
+
+    html.on("change", ".skillModifierName", (ev) =>
+      this._onEditSkillModifierName(ev, this.item)
+    );
+
+    html.on("change", ".itemModifierUse", (ev) =>
+      this._onEditSkillModifierUse(ev, this.item)
+    );
+
+    html.on("click", ".modifier-delete", (ev) => 
+      this._onDeleteSkillModifier(ev, this.item)
+    );
   }
 
-  _onCreateModifier(event){
+  _onCreateModifier(event, item){
     event.preventDefault();
-    this.item.system.modifiers.push({id: foundry.utils.randomID()});
+    //item.system.modifiers.push({id: foundry.utils.randomID()});
+    let newModifiers = item.system.modifiers;
+    newModifiers.push({id:foundry.utils.randomID()});
+    item.update({"system.modifiers": newModifiers});
+  }
+
+  _onEditSkillModifierSkill(event, item){
+    event.preventDefault();
+    let newSkill = event.target.selectedOptions[0].value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].skill = newSkill;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onEditSkillModifierName(event, item){
+    event.preventDefault();
+    let newName = event.target.value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].name = newName;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onEditSkillModifierUse(event, item){
+    event.preventDefault();
+    let checked = event.target.checked;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].useModifier = checked;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }  
+
+  _onEditSkillModifierValue(event, item){
+    event.preventDefault();
+    let newValue = event.target.value;
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    for(let mod in modifiers){
+      if(modifiers[mod].id === targetModifierId){
+        modifiers[mod].value = newValue;
+        break;
+      }
+    }
+    item.update({"system.modifiers": modifiers}); 
+  }
+
+  _onDeleteSkillModifier(event, item){
+    let modifiers = item.system.modifiers;
+    let targetModifierId = event.target.dataset.modifierId;
+    let newModifiers = modifiers.filter(mod => {
+      return mod.id !== targetModifierId;
+    });
+    item.update({"system.modifiers": newModifiers});
   }
 }
